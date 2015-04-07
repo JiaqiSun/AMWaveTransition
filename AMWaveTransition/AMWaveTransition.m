@@ -88,6 +88,9 @@ const CGFloat MAX_DELAY = 0.15;
     _maxDelay = MAX_DELAY;
 }
 
+/**
+ *  附加交互手势
+ */
 - (void)attachInteractiveGestureToNavigationController:(UINavigationController *)navigationController
 {
     self.navigationController = navigationController;

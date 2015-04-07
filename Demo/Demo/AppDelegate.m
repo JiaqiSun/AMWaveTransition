@@ -12,6 +12,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // 设置应用的statusBar属性
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 	[[UIApplication sharedApplication] setStatusBarHidden:NO];
     NSDictionary *attributes = @{ NSFontAttributeName: [UIFont fontWithName:@"GillSans-Light" size:20],

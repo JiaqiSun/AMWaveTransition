@@ -22,6 +22,7 @@
 {
     [super viewDidLoad];
     
+    // 设置导航控制器的整体属性
     [self.navigationController.view setBackgroundColor:[UIColor colorWithRed:0.912 green:0.425 blue:0.029 alpha:1.000]];
 	[self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.912 green:0.425 blue:0.029 alpha:1.000]];
     [self.navigationController.navigationBar setTranslucent:NO];
@@ -64,14 +65,22 @@
     [cell.imageView setImage:[UIImage imageNamed:dict[@"icon"]]];
     return cell;
 }
-
+/*
+typedef NS_ENUM(NSInteger, AMWaveTransitionType) {
+    AMWaveTransitionTypeSubtle,   //敏感的
+    AMWaveTransitionTypeNervous,  //紧张的
+    AMWaveTransitionTypeBounce    //弹跳
+};
+ */
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                   animationControllerForOperation:(UINavigationControllerOperation)operation
                                                fromViewController:(UIViewController*)fromVC
                                                  toViewController:(UIViewController*)toVC
 {
+//    NSLog(@"%d",operation);
     if (operation != UINavigationControllerOperationNone) {
         return [AMWaveTransition transitionWithOperation:operation andTransitionType:AMWaveTransitionTypeBounce];
+//        return [AMWaveTransition transitionWithOperation:operation andTransitionType:AMWaveTransitionTypeBounce];
     }
     return nil;
 }

@@ -15,9 +15,9 @@
 @end
 
 typedef NS_ENUM(NSInteger, AMWaveTransitionType) {
-    AMWaveTransitionTypeSubtle,
-    AMWaveTransitionTypeNervous,
-    AMWaveTransitionTypeBounce
+    AMWaveTransitionTypeSubtle,   //敏感的
+    AMWaveTransitionTypeNervous,  //紧张的
+    AMWaveTransitionTypeBounce    //弹跳
 };
 
 typedef NS_ENUM(NSInteger, AMWaveInteractiveTransitionType) {
@@ -29,14 +29,18 @@ typedef NS_ENUM(NSInteger, AMWaveInteractiveTransitionType) {
 
 /**-----------------------------------------------------------------------------
  * @name AMWaveTransition
+ *
+ * <UIViewControllerAnimatedTransitioning>
+ * Adopt the UIViewControllerAnimatedTransitioning protocol in objects that implement the animations for a custom view controller transition. The methods in this protocol let you define an animator object, which creates the animations for transitioning a view controller on or off screen in a fixed amount of time. The animations you create using this protocol must not be interactive. To create interactive transitions, you must combine your animator object with another object that controls the timing of your animations.
  * -----------------------------------------------------------------------------
  */
 
-/** New transition
- *
+/** New transition 新建一个形变对象 ,此对象作用是 处理导航控制器的形变操作.
+ * 
  * Returns a AMWaveTransition instance.
  *
  * @param operation The UINavigationControllerOperation that determines the transition type (push or pop)
+ * operation 当导航控制器push或者pop的时候 创建形变对象
  */
 + (instancetype)transitionWithOperation:(UINavigationControllerOperation)operation;
 
@@ -45,7 +49,7 @@ typedef NS_ENUM(NSInteger, AMWaveInteractiveTransitionType) {
  * Returns a AMWaveTransition instance.
  *
  * @param operation The UINavigationControllerOperation that determines the transition type (push or pop)
- * @param type The transition type
+ * @param type The transition type  transition: 转场
  */
 + (instancetype)transitionWithOperation:(UINavigationControllerOperation)operation andTransitionType:(AMWaveTransitionType)type;
 
@@ -66,7 +70,7 @@ typedef NS_ENUM(NSInteger, AMWaveInteractiveTransitionType) {
  */
 - (instancetype)initWithOperation:(UINavigationControllerOperation)operation andTransitionType:(AMWaveTransitionType)type;
 
-/** Attach the interactive gesture
+/** Attach the interactive gesture  附加交互手势
  *
  * Attach the interactive gesture to the navigation controller. This will pop the current view controller when the user swipes from the left edge.
  * Make sure to detach the gesture when done.
@@ -75,7 +79,7 @@ typedef NS_ENUM(NSInteger, AMWaveInteractiveTransitionType) {
  */
 - (void)attachInteractiveGestureToNavigationController:(UINavigationController *)navigationController;
 
-/** Detach the interactive gesture
+/** Detach the interactive gesture  分离交互手势
  *
  * Detaches the interactive gesture.
  */
@@ -124,7 +128,7 @@ typedef NS_ENUM(NSInteger, AMWaveInteractiveTransitionType) {
 
 /** Interactive transition type
  *
- * Sets interactive transition type (edge or fullscreen). Defaults to edge.
+ * Sets interactive transition type (edge or fullscreen). Defaults to edge. 
  */
 @property (assign, nonatomic) AMWaveInteractiveTransitionType interactiveTransitionType;
 
